@@ -44,7 +44,9 @@ class LanguageModel:
             sentence += " "
             sentence = self._transformation([sentence], features)
 
+        predictions = ""
         for prediction in self.ensemble.predict(sentence):
             print("the prediction is: " + prediction)
+            predictions += prediction + " \n"
 
-        return self._top_three(sentence)
+        return predictions + self._top_three(sentence)
