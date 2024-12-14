@@ -16,7 +16,7 @@ def detectClick():
     if text.strip() == "":
         print()
     else:
-        detection = model.finalmodel(text)
+        detection = model.predict(text)
         translation.config(text="The language is: "+ detection)
 
 

@@ -4,9 +4,9 @@ from features import features
 
 class LanguageModel:
     def __init__(self):
-        self.ensemble = joblib.load('language_detection_model.pkl')
+        self.ensemble = joblib.load('C:/Users/ACER/Desktop/ML/MLprogetto/language_detection_model.pkl')
 
-    def transformation(self, sentences, special_chars):
+    def _transformation(self, sentences, special_chars):
         res = []
         sentences = list(map(str.lower, sentences))
         for sentence in sentences:
@@ -19,7 +19,7 @@ class LanguageModel:
             res.append(sent_vector)
         return res
 
-    def top_three(self, X):
+    def _top_three(self, X):
         res = ""
         probabilities = self.ensemble.predict_proba(X)
         labels = self.ensemble.classes_
@@ -35,16 +35,16 @@ class LanguageModel:
 
         return res
 
-    def finalmodel(self, sentence):
+    def predict(self, sentence):
         if isinstance(sentence, list):
             for phrase in sentence:
                 phrase += " "
-            sentence = self.transformation(sentence, features)
+            sentence = self._transformation(sentence, features)
         else:
             sentence += " "
-            sentence = self.transformation([sentence], features)
+            sentence = self._transformation([sentence], features)
 
         for prediction in self.ensemble.predict(sentence):
             print("the prediction is: " + prediction)
 
-        return self.top_three(sentence)
+        return self._top_three(sentence)
