@@ -8,8 +8,11 @@ class LanguageModel:
 
     def _transformation(self, sentences, special_chars):
         res = []
+        remove_chars = "?.,:!"
+        trans_table = str.maketrans("", "", remove_chars)
         sentences = list(map(str.lower, sentences))
         for sentence in sentences:
+            sentence = sentence.translate(trans_table)
             sent_vector = [0 for _ in range(len(special_chars))]
             for index, char in enumerate(special_chars):
                 if char in sentence:
