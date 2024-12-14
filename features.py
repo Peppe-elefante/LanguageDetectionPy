@@ -35,6 +35,7 @@ saluti = [
     "Ciao", "Buongiorno", "Salve", "Buonasera", "Buonanotte", "come stai",  # Italian
     "Hallo", "Guten Morgen", "Guten Tag", "Guten Abend", "Servus"  # German
 ]
+saluti = list(map(str.lower, saluti))
 
 pronomi_soggetivi = [
     "i ", "you ", "he ", "she ", "it ", "we ", "they ",

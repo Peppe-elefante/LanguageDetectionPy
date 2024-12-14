@@ -7,6 +7,7 @@ from tkinter import *
 import sklearn
 from LanguagePredictionModel import LanguageModel
 
+
 root = Tk()
 
 model = LanguageModel()
@@ -21,6 +22,9 @@ def detectClick():
 
 
 root.geometry("505x300")
+root.title("Language Detection")
+
+
 myLabel = Label(root, text="Insert text", font=("Helvetica", 15),  justify="center")
 myLabel.grid(row= 1, column= 1, padx=5, pady=5)
 inputText = Entry(root, width = 70, justify="center", font=("Helvetica", 10))
